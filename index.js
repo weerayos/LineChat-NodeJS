@@ -18,12 +18,14 @@ server()
     .post('/webhook', function (req, res) {
         let replyToken = req.body.events[0].replyToken;
         let msg = req.body.events[0].message.text;
-
+        
         const db = firebase.database();
         const ref = db.ref("db1/chatbot");
         
         const usersRef = ref.child("chatlog");
-        usersRef.set({msg});
+        usersRef.set({
+          replyToken: msg
+        });
 
         res.json({
             status: 200,
