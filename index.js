@@ -21,10 +21,14 @@ server()
         
         const db = firebase.database();
         const ref = db.ref("db1/chatbot");
+        const timeRef = (new Date()).getTime();
         
-        const usersRef = ref.child("chatlog");
-        usersRef.set({
-          replyToken: msg
+        const chatLog = ref.child("chatlog");
+        chatLog.set({
+          chatMsg: {
+            Chat: msg,
+            Time: timeRef
+          }
         });
 
         res.json({
