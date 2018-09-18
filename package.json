@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-line-api",
+  "version": "1.0.0",
+  "description": "A sample project of Node.js and Line API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Pamontep Panya <pamontep.p@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "firebase-admin": "^5.12.1",
+    "request": "^2.87.0"
+  }
+}
