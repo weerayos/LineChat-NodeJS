@@ -23,7 +23,7 @@ server()
         const ref = db.ref("db1/chatbot");
         const timeRef = (new Date()).getTime();
         
-        const chatLog = ref.child("chatlog");
+        const chatLog = ref.child(msg);
         chatLog.set({
           chatMsg: {
             Chat: msg,
