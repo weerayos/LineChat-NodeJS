@@ -18,32 +18,16 @@ server()
     .post('/webhook', function (req, res) {
         let replyToken = req.body.events[0].replyToken;
         let msg = req.body.events[0].message.text;
-        
-        console.log(`Message token : ${ replyToken }`);
-        console.log(`Message from chat : ${ msg }`);
 
-        var db = firebase.database();
-        var ref = db.ref("restricted_access/secret_document");
-
-        ref.once("value", function(snapshot) {
-          console.log(snapshot.val());
-        });
+        const db = firebase.database();
+        const ref = db.ref("db1/chatbot");
         
-        var usersRef = ref.child("users");
-        usersRef.set({
-          alanisawesome: {
-            date_of_birth: "June 23, 1912",
-            full_name: "Alan Turing"
-          },
-          gracehop: {
-            date_of_birth: "December 9, 1906",
-            full_name: "Grace Hopper"
-          }
-        });
+        const usersRef = ref.child("chatlog");
+        usersRef.set({msg});
 
         res.json({
             status: 200,
             message: `Webhook is working!`
         });
     })
-    .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+.listen(PORT, () => console.log(`Listening on ${ PORT }`));
