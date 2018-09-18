@@ -27,9 +27,11 @@ server()
         const ref = db.ref("db1/chatbot");
         const timeRef = (new Date()).getTime();
         
-        const chatLog = ref.child(message);
+        var words = message.split(' ');
+
+        const chatLog = ref.child(words[0]);
         chatLog.set({
-            Problem: message,
+            Problem: words[1],
             Time: timeRef
         });
 
