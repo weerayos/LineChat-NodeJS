@@ -26,11 +26,12 @@ server()
         const db = firebase.database();
         const ref = db.ref("db1/chatbot");
         const timeRef = (new Date()).getTime();
+        var msg = message.split(':');
         
-        const chatLog = ref.child(message);
+        const chatLog = ref.child(msg[0]);
         chatLog.set({
           chatMsg: {
-            Chat: message,
+            Chat: msg[1],
             Time: timeRef
           }
         });
