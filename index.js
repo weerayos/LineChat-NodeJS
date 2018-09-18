@@ -29,10 +29,8 @@ server()
         
         const chatLog = ref.child(message);
         chatLog.set({
-          chatMsg: {
             Chat: message,
             Time: timeRef
-          }
         });
 
         lineMessaging.replyMessage(replyToken, message).then(function (rs) {
