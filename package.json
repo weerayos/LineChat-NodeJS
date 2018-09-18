@@ -1,13 +1,13 @@
 {
-  "name": "nodejs-line-api",
+  "name": "nodejschatbot",
   "version": "1.0.0",
   "description": "A sample project of Node.js and Line API",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Pamontep Panya <pamontep.p@gmail.com>",
-  "license": "MIT",
+  "author": "Weerayos Numkanisorn",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
