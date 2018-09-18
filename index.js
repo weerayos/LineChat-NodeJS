@@ -2,6 +2,13 @@ const server = require('express');
 const PORT = process.env.PORT || 9999;
 const request = require('request');
 const bodyParser = require('body-parser');
+const firebase = require("firebase-admin");
+const serviceAccount = require("./serviceAccountKey.json");
+
+firebase.initializeApp({
+  credential: firebase.credential.cert(serviceAccount),
+  databaseURL: "https://chatb-bb6ea.firebaseio.com"
+});
 
 server()
     .use(bodyParser.json())
@@ -14,6 +21,25 @@ server()
         
         console.log(`Message token : ${ replyToken }`);
         console.log(`Message from chat : ${ msg }`);
+
+        var db = firebase.database();
+        var ref = db.ref("restricted_access/secret_document");
+
+        ref.once("value", function(snapshot) {
+          console.log(snapshot.val());
+        });
+        
+        var usersRef = ref.child("users");
+        usersRef.set({
+          alanisawesome: {
+            date_of_birth: "June 23, 1912",
+            full_name: "Alan Turing"
+          },
+          gracehop: {
+            date_of_birth: "December 9, 1906",
+            full_name: "Grace Hopper"
+          }
+        });
 
         res.json({
             status: 200,
