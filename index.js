@@ -29,7 +29,7 @@ server()
         
         const chatLog = ref.child(message);
         chatLog.set({
-            Chat: message,
+            Problem: message,
             Time: timeRef
         });
 
