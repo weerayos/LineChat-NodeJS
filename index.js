@@ -8,7 +8,7 @@ const serviceAccount = require("./serviceAccountKey.json");
 
 firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount),
-  databaseURL: "https://chatb-bb6ea.firebaseio.com"
+  databaseURL: "xxxxxxxx"
 });
 
 server()
